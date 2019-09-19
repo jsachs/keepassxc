@@ -24,6 +24,7 @@
 #include "core/Metadata.h"
 #include "format/KeePass2Reader.h"
 #include "format/KeePass2Writer.h"
+#include "format/KdbxXmlReader.h"
 #include "keys/FileKey.h"
 #include "keys/PasswordKey.h"
 
@@ -329,6 +330,24 @@ bool Database::extract(QByteArray& xmlOutput, QString* error)
         return false;
     }
 
+    return true;
+}
+
+bool Database::import(const QString& xmlExportPath, QString* error)
+{
+    KdbxXmlReader reader(KeePass2::FILE_VERSION_4);
+    QFile file(xmlExportPath);
+    file.open(QIODevice::ReadOnly);
+
+    reader.readDatabase(&file, this);
+
+    if (reader.hasError()) {
+        if (error) {
+            *error = reader.errorString();
+        }
+        return false;
+    }
+    
     return true;
 }
 

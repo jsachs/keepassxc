@@ -53,7 +53,7 @@ bool Kdbx3Reader::readDatabaseImpl(QIODevice* device,
     }
 
     if (!db->challengeMasterSeed(m_masterSeed)) {
-        raiseError(tr("Unable to issue challenge-response."));
+        raiseError(tr("Unable to issue challenge-response"));
         return false;
     }
 
