@@ -332,6 +332,20 @@ bool Database::extract(QByteArray& xmlOutput, QString* error)
     return true;
 }
 
+bool Database::import(QString& xmlExport, QString* error)
+{
+  KdbxXmlReader reader;
+  database = reader.readDatabase(xmlExport);
+  if (reader.hasError()) {
+    if (error) {
+      *error = reader.errorString();
+    }
+    return false
+  }
+
+  return true;
+}
+
 /**
  * Remove the old backup and replace it with a new one
  * backups are named <filename>.old.<extension>

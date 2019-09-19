@@ -25,6 +25,7 @@ set(cli_SOURCES
         Estimate.cpp
         Extract.cpp
         Generate.cpp
+        Import.cpp
         List.cpp
         Locate.cpp
         Merge.cpp
