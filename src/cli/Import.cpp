@@ -35,7 +35,7 @@
  * Create a database file from an XML export of another database.
  * A password can be specified to encrypt the database.
  * If none is specified the function will fail.
- * 
+ *
  * If the database is being saved in a non existant directory, the
  * function will fail.
  *
@@ -84,7 +84,7 @@ int Import::execute(const QStringList& arguments)
     Database db;
     db.setKey(key);
 
-    if (!db.import(xmlExportPath, &errorMessage))  {
+    if (!db.import(xmlExportPath, &errorMessage)) {
         errorTextStream << QObject::tr("Unable to import XML database export %1").arg(errorMessage) << endl;
         return EXIT_FAILURE;
     }

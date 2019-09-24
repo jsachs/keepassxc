@@ -22,9 +22,9 @@
 #include "core/Group.h"
 #include "core/Merger.h"
 #include "core/Metadata.h"
+#include "format/KdbxXmlReader.h"
 #include "format/KeePass2Reader.h"
 #include "format/KeePass2Writer.h"
-#include "format/KdbxXmlReader.h"
 #include "keys/FileKey.h"
 #include "keys/PasswordKey.h"
 
@@ -347,7 +347,7 @@ bool Database::import(const QString& xmlExportPath, QString* error)
         }
         return false;
     }
-    
+
     return true;
 }
 
