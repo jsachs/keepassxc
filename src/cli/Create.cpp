@@ -106,27 +106,6 @@ int Create::execute(const QStringList& arguments)
     return EXIT_SUCCESS;
 }
 
-/**
- * Read optional password from stdin.
- *
- * @return Pointer to the PasswordKey or null if passwordkey is skipped
- *         by user
- */
-QSharedPointer<PasswordKey> Create::getPasswordFromStdin()
-{
-    QSharedPointer<PasswordKey> passwordKey;
-    QTextStream out(Utils::STDOUT, QIODevice::WriteOnly);
-
-    out << QObject::tr("Insert password to encrypt database (Press enter to leave blank): ");
-    out.flush();
-    QString password = Utils::getPassword();
-
-    if (!password.isEmpty()) {
-        passwordKey = QSharedPointer<PasswordKey>(new PasswordKey(password));
-    }
-
-    return passwordKey;
-}
 
 /**
  * Load a key file from disk. When the path specified does not exist a
