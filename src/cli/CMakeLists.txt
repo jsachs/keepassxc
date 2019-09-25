@@ -15,6 +15,7 @@
 
 set(cli_SOURCES
         Add.cpp
+        AddGroup.cpp
         Analyze.cpp
         Clip.cpp
         Create.cpp
@@ -23,13 +24,15 @@ set(cli_SOURCES
         Diceware.cpp
         Edit.cpp
         Estimate.cpp
-        Extract.cpp
+        Export.cpp
         Generate.cpp
         Import.cpp
         List.cpp
         Locate.cpp
         Merge.cpp
+        Move.cpp
         Remove.cpp
+        RemoveGroup.cpp
         Show.cpp)
 
 add_library(cli STATIC ${cli_SOURCES})
