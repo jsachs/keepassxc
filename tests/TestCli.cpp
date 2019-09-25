@@ -187,7 +187,7 @@ QSharedPointer<Database> TestCli::readTestDatabase() const
 
 void TestCli::testCommand()
 {
-    QCOMPARE(Command::getCommands().size(), 15);
+    QCOMPARE(Command::getCommands().size(), 18);
     QVERIFY(Command::getCommand("add"));
     QVERIFY(Command::getCommand("analyze"));
     QVERIFY(Command::getCommand("clip"));
@@ -977,7 +977,7 @@ void TestCli::testImport()
     QCOMPARE(m_stdoutFile->readLine(), QByteArray("Successfully imported database.\n"));
 
     Utils::Test::setNextPassword("a");
-    auto db = QSharedPointer<Database>(Utils::unlockDatabase(databaseFilename, true, "", Utils::DEVNULL));
+    auto db = QSharedPointer<Database>(Utils::unlockDatabase(databaseFilename, true, "", "", Utils::DEVNULL));
     QVERIFY(db);
 
     // Should refuse to create the database if it already exists.
@@ -1003,7 +1003,7 @@ void TestCli::testImport()
     m_stdoutFile->seek(pos);
 
     Utils::Test::setNextPassword("a");
-    auto dbQuiet = QSharedPointer<Database>(Utils::unlockDatabase(databaseFilenameQuiet, true, "", Utils::DEVNULL));
+    auto dbQuiet = QSharedPointer<Database>(Utils::unlockDatabase(databaseFilenameQuiet, true, "", "", Utils::DEVNULL));
     QVERIFY(dbQuiet);
 }
 

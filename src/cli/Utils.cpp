@@ -218,6 +218,28 @@ namespace Utils
     }
 
     /**
+    * Read optional password from stdin.
+    *
+    * @return Pointer to the PasswordKey or null if passwordkey is skipped
+    *         by user
+    */
+    QSharedPointer<PasswordKey> getPasswordFromStdin()
+    {
+      QSharedPointer<PasswordKey> passwordKey;
+      QTextStream out(Utils::STDOUT, QIODevice::WriteOnly);
+
+      out << QObject::tr("Insert password to encrypt database (Press enter to leave blank): ");
+      out.flush();
+      QString password = Utils::getPassword();
+
+      if (!password.isEmpty()) {
+        passwordKey = QSharedPointer<PasswordKey>(new PasswordKey(password));
+      }
+
+      return passwordKey;
+    }
+
+    /**
      * A valid and running event loop is needed to use the global QClipboard,
      * so we need to use this from the CLI.
      */

@@ -70,7 +70,7 @@ int Import::execute(const QStringList& arguments)
 
     auto key = QSharedPointer<CompositeKey>::create();
 
-    auto password = getPasswordFromStdin();
+    auto password = Utils::getPasswordFromStdin();
     if (!password.isNull()) {
         key->addKey(password);
     }

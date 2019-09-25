@@ -27,9 +27,6 @@ class Import : public Command
 public:
     Import();
     int execute(const QStringList& arguments) override;
-
-private:
-    QSharedPointer<PasswordKey> getPasswordFromStdin();
 };
 
 #endif // KEEPASSXC_IMPORT_H
