@@ -214,7 +214,7 @@ void TestCli::testBatchCommands()
     QVERIFY(Commands::getCommand("rmdir"));
     QVERIFY(Commands::getCommand("show"));
     QVERIFY(!Commands::getCommand("doesnotexist"));
-    QCOMPARE(Commands::getCommands().size(), 20);
+    QCOMPARE(Commands::getCommands().size(), 21);
 }
 
 void TestCli::testInteractiveCommands()
@@ -242,7 +242,7 @@ void TestCli::testInteractiveCommands()
     QVERIFY(Commands::getCommand("rmdir"));
     QVERIFY(Commands::getCommand("show"));
     QVERIFY(!Commands::getCommand("doesnotexist"));
-    QCOMPARE(Commands::getCommands().size(), 22);
+    QCOMPARE(Commands::getCommands().size(), 21);
 }
 
 void TestCli::testAdd()
