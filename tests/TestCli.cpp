@@ -979,6 +979,9 @@ void TestCli::testImport()
     Utils::Test::setNextPassword("a");
     auto db = QSharedPointer<Database>(Utils::unlockDatabase(databaseFilename, true, "", "", Utils::DEVNULL));
     QVERIFY(db);
+    auto* entry = db->rootGroup()->findEntryByPath("/Sample Entry 1");
+    QVERIFY(entry);
+    QCOMPARE(entry->username(), QString("User Name"));
 
     // Should refuse to create the database if it already exists.
     qint64 pos = m_stdoutFile->pos();
