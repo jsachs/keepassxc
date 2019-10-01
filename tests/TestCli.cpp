@@ -1042,7 +1042,13 @@ void TestCli::testImport()
     pos = m_stdoutFile->pos();
     Utils::Test::setNextPassword("a");
     importCmd.execute({"import", "-q", m_xmlFile->fileName(), databaseFilenameQuiet});
-    m_stdoutFile->seek(pos);
+
+    m_stderrFile->reset();
+    m_stdoutFile->reset();
+
+    QCOMPARE(m_stdoutFile->readLine(),
+             QByteArray("Insert password to encrypt database (Press enter to leave blank): \n"));
+    QCOMPARE(m_stdoutFile->readLine(), QByteArray(""));
 
     Utils::Test::setNextPassword("a");
     auto dbQuiet = QSharedPointer<Database>(Utils::unlockDatabase(databaseFilenameQuiet, true, "", "", Utils::DEVNULL));

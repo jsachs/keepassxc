@@ -107,7 +107,6 @@ int Create::execute(const QStringList& arguments)
     return EXIT_SUCCESS;
 }
 
-
 /**
  * Load a key file from disk. When the path specified does not exist a
  * new file will be generated. No folders will be generated so the parent

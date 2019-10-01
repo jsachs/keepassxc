@@ -51,13 +51,14 @@ Import::Import()
 
 int Import::execute(const QStringList& arguments)
 {
-    TextStream outputTextStream(Utils::STDOUT, QIODevice::WriteOnly);
-    TextStream errorTextStream(Utils::STDERR, QIODevice::WriteOnly);
-
     QSharedPointer<QCommandLineParser> parser = getCommandLineParser(arguments);
     if (parser.isNull()) {
         return EXIT_FAILURE;
     }
+
+    TextStream outputTextStream(parser->isSet(Command::QuietOption) ? Utils::DEVNULL : Utils::STDOUT,
+                                QIODevice::WriteOnly);
+    TextStream errorTextStream(Utils::STDERR, QIODevice::WriteOnly);
 
     const QStringList args = parser->positionalArguments();
     const QString xmlExportPath = args.at(0);
