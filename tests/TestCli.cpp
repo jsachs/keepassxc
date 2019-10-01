@@ -1033,8 +1033,6 @@ void TestCli::testImport()
     QString errorMessage = QString("File " + databaseFilename + " already exists.\n");
     QCOMPARE(m_stderrFile->readAll(), errorMessage.toUtf8());
 
-    m_stdoutFile->reset();
-
     // Quiet option
     QScopedPointer<QTemporaryDir> testDirQuiet(new QTemporaryDir());
     QString databaseFilenameQuiet = testDirQuiet->path() + "testImport2.kdbx";
