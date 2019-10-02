@@ -21,7 +21,6 @@
 #include "Command.h"
 
 #include "keys/FileKey.h"
-#include "keys/PasswordKey.h"
 
 class Create : public Command
 {

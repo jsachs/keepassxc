@@ -20,8 +20,6 @@
 
 #include "Command.h"
 
-#include "keys/PasswordKey.h"
-
 class Import : public Command
 {
 public:
